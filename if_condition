@@ -18,7 +18,7 @@ console.log(media);
 
 if (media < 40) {
   console.log("Reprovado com", media);
-} else if (media > 40 && media < 60) {
+} else if (media >= 40 && media < 60) {
   console.log("Recuperação com", media);
 } else {
   console.log("Parabéns! Você foi aprovado com", media);
