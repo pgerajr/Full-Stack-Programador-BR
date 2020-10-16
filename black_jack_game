@@ -4,6 +4,7 @@ var computer = 0;
 var player = 0;
 
 var winner = "";
+var loser = "";
 
 var game_comp = 0;
 var game_player = 0;
