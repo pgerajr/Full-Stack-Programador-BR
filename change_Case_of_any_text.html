@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Intermediate - O que é THIS?</title>
+</head>
+
+<script>
+
+    function loaded() {
+        let title = document.getElementById("title");
+        let sub_title = document.getElementById("sub-title");
+        let upper = false;
+
+        title.onclick = changeCase;
+        sub_title.onclick = changeCase;
+
+        title.onmouseout = wordCapitalize;
+        sub_title.onmouseout = wordCapitalize;
+
+        function changeCase() {
+            if (upper == false) {
+                this.innerText = this.innerText.toUpperCase();
+                upper = true;
+            } else {
+                this.innerText = this.innerText.toLowerCase();
+                upper = false;
+            }
+        }
+
+        function wordCapitalize() {
+            words = this.innerText.split(" ");
+            let letters = new Array()
+            let backWord = new Array()
+
+            for (i in words) {
+                letters[i] = words[i].split("");
+                for (x in letters[i]) {
+                    if (x == 0) {
+                        letters[i][x] = letters[i][x].toUpperCase();
+                    } else {
+                        letters[i][x] = letters[i][x].toLowerCase();
+                    }
+                }
+                backWord[i] = letters[i].join("")
+            }
+
+            backSentence = backWord.join(" ")
+            this.innerText = backSentence
+        }
+    }
+
+</script>
+
+<body onload="loaded()">
+
+    <h1 id="title">Clique no Título para alternar entre maiúscula e minúscula. Tire o mouse de cima do titulo para
+        transformar a primeira letra de cada palavra em maiúscula.</h1>
+
+    <h2 id="sub-title">Clique no Sub-Título</h2>
+
+</body>
+
+</html>
