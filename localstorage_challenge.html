@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Intermediate - Desafio LocalStorage</title>
+</head>
+
+<script>
+
+    onload = function () {
+
+        let load_list = localStorage.getItem("my_list");
+        let list_items = document.getElementById("ul_list");
+
+        list_items.innerHTML = JSON.parse(load_list);
+
+    }
+
+    function task_list() {
+
+        let content = document.getElementById("task_input")
+        let data = content.value;
+
+        let ul_list = document.getElementById("ul_list")
+
+        li = document.createElement("li")
+
+        if (data == "") {
+            alert("You need to type an actual item to create your list. Please, use the INPUT field to do so.")
+        } else {
+            li.innerHTML = data
+            ul_list.appendChild(li)
+            let array = Array.from(data)
+            console.log(array)
+        }
+
+        let list = localStorage.setItem("my_list", JSON.stringify(ul_list.innerHTML))
+
+        content.value = ""
+    }
+
+    function erase_List() {
+        localStorage.clear("my_list")
+    }
+
+</script>
+
+<body>
+
+    <label>Lista de Tarefas</label><br>
+    <input id="task_input" type="text"><br><br>
+    <button onClick="task_list()">Adiciona Tarefa</button>
+    <button onClick="erase_List()">Apagar Lista</button>
+    <br><br>
+
+    <ul id="ul_list">
+    </ul>
+
+</body>
+
+</html>
